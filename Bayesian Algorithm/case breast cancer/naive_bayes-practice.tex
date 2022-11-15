@@ -1,0 +1,802 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Klasifikasi Breast Cancer dengan Naive Bayes},
+  pdfauthor={yohanesegipratama},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Klasifikasi Breast Cancer dengan Naive Bayes}
+\author{yohanesegipratama}
+\date{2022-11-16}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\hypertarget{objectives}{%
+\section{Objectives}\label{objectives}}
+
+Analisis ini bertujuan untuk mengamati fitur mana yang paling membantu
+dalam memprediksi kanker ganas atau jinak dan untuk melihat tren umum
+yang dapat membantu kita dalam pemilihan model dan pemilihan parameter
+hiper. Tujuannya adalah untuk mengklasifikasikan apakah kanker payudara
+tersebut jinak atau ganas. Untuk mencapai ini saya menggunakan metode
+naive bayes
+
+\hypertarget{library}{%
+\section{library}\label{library}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages --------------------------------------- tidyverse 1.3.2 --
+## v ggplot2 3.4.0      v purrr   0.3.5 
+## v tibble  3.1.8      v dplyr   1.0.10
+## v tidyr   1.2.1      v stringr 1.4.1 
+## v readr   2.1.3      v forcats 0.5.2
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'ggplot2' was built under R version 4.2.2
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(caret)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'caret' was built under R version 4.2.2
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: lattice
+## 
+## Attaching package: 'caret'
+## 
+## The following object is masked from 'package:purrr':
+## 
+##     lift
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(e1071)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'e1071' was built under R version 4.2.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(visdat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'visdat' was built under R version 4.2.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(cowplot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'cowplot' was built under R version 4.2.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(corrplot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## corrplot 0.92 loaded
+\end{verbatim}
+
+\hypertarget{load-data}{%
+\section{load data}\label{load-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{=} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}data\_input/data.csv\textquotesingle{}}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         id diagnosis radius_mean texture_mean perimeter_mean area_mean
+## 1   842302         M       17.99        10.38         122.80    1001.0
+## 2   842517         M       20.57        17.77         132.90    1326.0
+## 3 84300903         M       19.69        21.25         130.00    1203.0
+## 4 84348301         M       11.42        20.38          77.58     386.1
+## 5 84358402         M       20.29        14.34         135.10    1297.0
+## 6   843786         M       12.45        15.70          82.57     477.1
+##   smoothness_mean compactness_mean concavity_mean concave.points_mean
+## 1         0.11840          0.27760         0.3001             0.14710
+## 2         0.08474          0.07864         0.0869             0.07017
+## 3         0.10960          0.15990         0.1974             0.12790
+## 4         0.14250          0.28390         0.2414             0.10520
+## 5         0.10030          0.13280         0.1980             0.10430
+## 6         0.12780          0.17000         0.1578             0.08089
+##   symmetry_mean fractal_dimension_mean radius_se texture_se perimeter_se
+## 1        0.2419                0.07871    1.0950     0.9053        8.589
+## 2        0.1812                0.05667    0.5435     0.7339        3.398
+## 3        0.2069                0.05999    0.7456     0.7869        4.585
+## 4        0.2597                0.09744    0.4956     1.1560        3.445
+## 5        0.1809                0.05883    0.7572     0.7813        5.438
+## 6        0.2087                0.07613    0.3345     0.8902        2.217
+##   area_se smoothness_se compactness_se concavity_se concave.points_se
+## 1  153.40      0.006399        0.04904      0.05373           0.01587
+## 2   74.08      0.005225        0.01308      0.01860           0.01340
+## 3   94.03      0.006150        0.04006      0.03832           0.02058
+## 4   27.23      0.009110        0.07458      0.05661           0.01867
+## 5   94.44      0.011490        0.02461      0.05688           0.01885
+## 6   27.19      0.007510        0.03345      0.03672           0.01137
+##   symmetry_se fractal_dimension_se radius_worst texture_worst perimeter_worst
+## 1     0.03003             0.006193        25.38         17.33          184.60
+## 2     0.01389             0.003532        24.99         23.41          158.80
+## 3     0.02250             0.004571        23.57         25.53          152.50
+## 4     0.05963             0.009208        14.91         26.50           98.87
+## 5     0.01756             0.005115        22.54         16.67          152.20
+## 6     0.02165             0.005082        15.47         23.75          103.40
+##   area_worst smoothness_worst compactness_worst concavity_worst
+## 1     2019.0           0.1622            0.6656          0.7119
+## 2     1956.0           0.1238            0.1866          0.2416
+## 3     1709.0           0.1444            0.4245          0.4504
+## 4      567.7           0.2098            0.8663          0.6869
+## 5     1575.0           0.1374            0.2050          0.4000
+## 6      741.6           0.1791            0.5249          0.5355
+##   concave.points_worst symmetry_worst fractal_dimension_worst  X
+## 1               0.2654         0.4601                 0.11890 NA
+## 2               0.1860         0.2750                 0.08902 NA
+## 3               0.2430         0.3613                 0.08758 NA
+## 4               0.2575         0.6638                 0.17300 NA
+## 5               0.1625         0.2364                 0.07678 NA
+## 6               0.1741         0.3985                 0.12440 NA
+\end{verbatim}
+
+\hypertarget{data-preparation}{%
+\section{Data Preparation}\label{data-preparation}}
+
+\hypertarget{check-missing-value}{%
+\subsection{Check Missing Value}\label{check-missing-value}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{colSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(df))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                      id               diagnosis             radius_mean 
+##                       0                       0                       0 
+##            texture_mean          perimeter_mean               area_mean 
+##                       0                       0                       0 
+##         smoothness_mean        compactness_mean          concavity_mean 
+##                       0                       0                       0 
+##     concave.points_mean           symmetry_mean  fractal_dimension_mean 
+##                       0                       0                       0 
+##               radius_se              texture_se            perimeter_se 
+##                       0                       0                       0 
+##                 area_se           smoothness_se          compactness_se 
+##                       0                       0                       0 
+##            concavity_se       concave.points_se             symmetry_se 
+##                       0                       0                       0 
+##    fractal_dimension_se            radius_worst           texture_worst 
+##                       0                       0                       0 
+##         perimeter_worst              area_worst        smoothness_worst 
+##                       0                       0                       0 
+##       compactness_worst         concavity_worst    concave.points_worst 
+##                       0                       0                       0 
+##          symmetry_worst fractal_dimension_worst                       X 
+##                       0                       0                     569
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{glimpse}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 569
+## Columns: 33
+## $ id                      <int> 842302, 842517, 84300903, 84348301, 84358402, ~
+## $ diagnosis               <chr> "M", "M", "M", "M", "M", "M", "M", "M", "M", "~
+## $ radius_mean             <dbl> 17.990, 20.570, 19.690, 11.420, 20.290, 12.450~
+## $ texture_mean            <dbl> 10.38, 17.77, 21.25, 20.38, 14.34, 15.70, 19.9~
+## $ perimeter_mean          <dbl> 122.80, 132.90, 130.00, 77.58, 135.10, 82.57, ~
+## $ area_mean               <dbl> 1001.0, 1326.0, 1203.0, 386.1, 1297.0, 477.1, ~
+## $ smoothness_mean         <dbl> 0.11840, 0.08474, 0.10960, 0.14250, 0.10030, 0~
+## $ compactness_mean        <dbl> 0.27760, 0.07864, 0.15990, 0.28390, 0.13280, 0~
+## $ concavity_mean          <dbl> 0.30010, 0.08690, 0.19740, 0.24140, 0.19800, 0~
+## $ concave.points_mean     <dbl> 0.14710, 0.07017, 0.12790, 0.10520, 0.10430, 0~
+## $ symmetry_mean           <dbl> 0.2419, 0.1812, 0.2069, 0.2597, 0.1809, 0.2087~
+## $ fractal_dimension_mean  <dbl> 0.07871, 0.05667, 0.05999, 0.09744, 0.05883, 0~
+## $ radius_se               <dbl> 1.0950, 0.5435, 0.7456, 0.4956, 0.7572, 0.3345~
+## $ texture_se              <dbl> 0.9053, 0.7339, 0.7869, 1.1560, 0.7813, 0.8902~
+## $ perimeter_se            <dbl> 8.589, 3.398, 4.585, 3.445, 5.438, 2.217, 3.18~
+## $ area_se                 <dbl> 153.40, 74.08, 94.03, 27.23, 94.44, 27.19, 53.~
+## $ smoothness_se           <dbl> 0.006399, 0.005225, 0.006150, 0.009110, 0.0114~
+## $ compactness_se          <dbl> 0.049040, 0.013080, 0.040060, 0.074580, 0.0246~
+## $ concavity_se            <dbl> 0.05373, 0.01860, 0.03832, 0.05661, 0.05688, 0~
+## $ concave.points_se       <dbl> 0.015870, 0.013400, 0.020580, 0.018670, 0.0188~
+## $ symmetry_se             <dbl> 0.03003, 0.01389, 0.02250, 0.05963, 0.01756, 0~
+## $ fractal_dimension_se    <dbl> 0.006193, 0.003532, 0.004571, 0.009208, 0.0051~
+## $ radius_worst            <dbl> 25.38, 24.99, 23.57, 14.91, 22.54, 15.47, 22.8~
+## $ texture_worst           <dbl> 17.33, 23.41, 25.53, 26.50, 16.67, 23.75, 27.6~
+## $ perimeter_worst         <dbl> 184.60, 158.80, 152.50, 98.87, 152.20, 103.40,~
+## $ area_worst              <dbl> 2019.0, 1956.0, 1709.0, 567.7, 1575.0, 741.6, ~
+## $ smoothness_worst        <dbl> 0.1622, 0.1238, 0.1444, 0.2098, 0.1374, 0.1791~
+## $ compactness_worst       <dbl> 0.6656, 0.1866, 0.4245, 0.8663, 0.2050, 0.5249~
+## $ concavity_worst         <dbl> 0.71190, 0.24160, 0.45040, 0.68690, 0.40000, 0~
+## $ concave.points_worst    <dbl> 0.26540, 0.18600, 0.24300, 0.25750, 0.16250, 0~
+## $ symmetry_worst          <dbl> 0.4601, 0.2750, 0.3613, 0.6638, 0.2364, 0.3985~
+## $ fractal_dimension_worst <dbl> 0.11890, 0.08902, 0.08758, 0.17300, 0.07678, 0~
+## $ X                       <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA~
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  insight Kumpulan data kanker payudara Wisconsin berisi 569 entri yang
+  berasal dari analisis gambar aspirasi jarum halus dari massa payudara.
+  Kolom pertama berisi id unik dan kolom kedua berisi diagnosis.
+\end{itemize}
+
+Tidak ada nilai yang hilang kecuali kolom 33 yang terlihat kosong.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# select features}
+\NormalTok{df\_selected }\OtherTok{\textless{}{-}}\NormalTok{ df[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{32}\NormalTok{]}
+
+\CommentTok{\# drop id variable}
+\NormalTok{Matrix }\OtherTok{\textless{}{-}}\NormalTok{ df\_selected}\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\StringTok{"id"}\NormalTok{))}\SpecialCharTok{\%\textgreater{}\%}
+\CommentTok{\# convert diagnosis to numerical}
+\FunctionTok{mutate}\NormalTok{(}\AttributeTok{diagnosis =} \FunctionTok{case\_when}\NormalTok{(}
+\NormalTok{diagnosis }\SpecialCharTok{==} \StringTok{"M"}\SpecialCharTok{\textasciitilde{}}\DecValTok{1}\NormalTok{,}
+\NormalTok{diagnosis }\SpecialCharTok{==} \StringTok{"B"}\SpecialCharTok{\textasciitilde{}}\DecValTok{0}\NormalTok{,}
+\NormalTok{))}\SpecialCharTok{\%\textgreater{}\%}
+\CommentTok{\# convert to matrix}
+\FunctionTok{as.matrix}\NormalTok{()}
+
+\CommentTok{\# add id column as names}
+\FunctionTok{row.names}\NormalTok{(Matrix) }\OtherTok{\textless{}{-}}\NormalTok{ df\_selected}\SpecialCharTok{$}\NormalTok{id}
+\FunctionTok{head}\NormalTok{(Matrix)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          diagnosis radius_mean texture_mean perimeter_mean area_mean
+## 842302           1       17.99        10.38         122.80    1001.0
+## 842517           1       20.57        17.77         132.90    1326.0
+## 84300903         1       19.69        21.25         130.00    1203.0
+## 84348301         1       11.42        20.38          77.58     386.1
+## 84358402         1       20.29        14.34         135.10    1297.0
+## 843786           1       12.45        15.70          82.57     477.1
+##          smoothness_mean compactness_mean concavity_mean concave.points_mean
+## 842302           0.11840          0.27760         0.3001             0.14710
+## 842517           0.08474          0.07864         0.0869             0.07017
+## 84300903         0.10960          0.15990         0.1974             0.12790
+## 84348301         0.14250          0.28390         0.2414             0.10520
+## 84358402         0.10030          0.13280         0.1980             0.10430
+## 843786           0.12780          0.17000         0.1578             0.08089
+##          symmetry_mean fractal_dimension_mean radius_se texture_se perimeter_se
+## 842302          0.2419                0.07871    1.0950     0.9053        8.589
+## 842517          0.1812                0.05667    0.5435     0.7339        3.398
+## 84300903        0.2069                0.05999    0.7456     0.7869        4.585
+## 84348301        0.2597                0.09744    0.4956     1.1560        3.445
+## 84358402        0.1809                0.05883    0.7572     0.7813        5.438
+## 843786          0.2087                0.07613    0.3345     0.8902        2.217
+##          area_se smoothness_se compactness_se concavity_se concave.points_se
+## 842302    153.40      0.006399        0.04904      0.05373           0.01587
+## 842517     74.08      0.005225        0.01308      0.01860           0.01340
+## 84300903   94.03      0.006150        0.04006      0.03832           0.02058
+## 84348301   27.23      0.009110        0.07458      0.05661           0.01867
+## 84358402   94.44      0.011490        0.02461      0.05688           0.01885
+## 843786     27.19      0.007510        0.03345      0.03672           0.01137
+##          symmetry_se fractal_dimension_se radius_worst texture_worst
+## 842302       0.03003             0.006193        25.38         17.33
+## 842517       0.01389             0.003532        24.99         23.41
+## 84300903     0.02250             0.004571        23.57         25.53
+## 84348301     0.05963             0.009208        14.91         26.50
+## 84358402     0.01756             0.005115        22.54         16.67
+## 843786       0.02165             0.005082        15.47         23.75
+##          perimeter_worst area_worst smoothness_worst compactness_worst
+## 842302            184.60     2019.0           0.1622            0.6656
+## 842517            158.80     1956.0           0.1238            0.1866
+## 84300903          152.50     1709.0           0.1444            0.4245
+## 84348301           98.87      567.7           0.2098            0.8663
+## 84358402          152.20     1575.0           0.1374            0.2050
+## 843786            103.40      741.6           0.1791            0.5249
+##          concavity_worst concave.points_worst symmetry_worst
+## 842302            0.7119               0.2654         0.4601
+## 842517            0.2416               0.1860         0.2750
+## 84300903          0.4504               0.2430         0.3613
+## 84348301          0.6869               0.2575         0.6638
+## 84358402          0.4000               0.1625         0.2364
+## 843786            0.5355               0.1741         0.3985
+##          fractal_dimension_worst
+## 842302                   0.11890
+## 842517                   0.08902
+## 84300903                 0.08758
+## 84348301                 0.17300
+## 84358402                 0.07678
+## 843786                   0.12440
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.numeric}\NormalTok{(Matrix)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\hypertarget{scalling}{%
+\subsection{Scalling}\label{scalling}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mean\_sd }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(}\FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{colMeans}\NormalTok{(Matrix)),  }\FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{apply}\NormalTok{(Matrix, }\DecValTok{2}\NormalTok{, sd)))}
+\FunctionTok{colnames}\NormalTok{(mean\_sd) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Mean"}\NormalTok{,}\StringTok{"SD"}\NormalTok{)}
+
+\NormalTok{mean\_sd}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                 Mean           SD
+## diagnosis               3.725835e-01 4.839180e-01
+## radius_mean             1.412729e+01 3.524049e+00
+## texture_mean            1.928965e+01 4.301036e+00
+## perimeter_mean          9.196903e+01 2.429898e+01
+## area_mean               6.548891e+02 3.519141e+02
+## smoothness_mean         9.636028e-02 1.406413e-02
+## compactness_mean        1.043410e-01 5.281276e-02
+## concavity_mean          8.879932e-02 7.971981e-02
+## concave.points_mean     4.891915e-02 3.880284e-02
+## symmetry_mean           1.811619e-01 2.741428e-02
+## fractal_dimension_mean  6.279761e-02 7.060363e-03
+## radius_se               4.051721e-01 2.773127e-01
+## texture_se              1.216853e+00 5.516484e-01
+## perimeter_se            2.866059e+00 2.021855e+00
+## area_se                 4.033708e+01 4.549101e+01
+## smoothness_se           7.040979e-03 3.002518e-03
+## compactness_se          2.547814e-02 1.790818e-02
+## concavity_se            3.189372e-02 3.018606e-02
+## concave.points_se       1.179614e-02 6.170285e-03
+## symmetry_se             2.054230e-02 8.266372e-03
+## fractal_dimension_se    3.794904e-03 2.646071e-03
+## radius_worst            1.626919e+01 4.833242e+00
+## texture_worst           2.567722e+01 6.146258e+00
+## perimeter_worst         1.072612e+02 3.360254e+01
+## area_worst              8.805831e+02 5.693570e+02
+## smoothness_worst        1.323686e-01 2.283243e-02
+## compactness_worst       2.542650e-01 1.573365e-01
+## concavity_worst         2.721885e-01 2.086243e-01
+## concave.points_worst    1.146062e-01 6.573234e-02
+## symmetry_worst          2.900756e-01 6.186747e-02
+## fractal_dimension_worst 8.394582e-02 1.806127e-02
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ScaledMatrix }\OtherTok{\textless{}{-}} \FunctionTok{scale}\NormalTok{(Matrix)}
+\FunctionTok{head}\NormalTok{(ScaledMatrix)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          diagnosis radius_mean texture_mean perimeter_mean  area_mean
+## 842302    1.296535   1.0960995   -2.0715123      1.2688173  0.9835095
+## 842517    1.296535   1.8282120   -0.3533215      1.6844726  1.9070303
+## 84300903  1.296535   1.5784992    0.4557859      1.5651260  1.5575132
+## 84348301  1.296535  -0.7682333    0.2535091     -0.5921661 -0.7637917
+## 84358402  1.296535   1.7487579   -1.1508038      1.7750113  1.8246238
+## 843786    1.296535  -0.4759559   -0.8346009     -0.3868077 -0.5052059
+##          smoothness_mean compactness_mean concavity_mean concave.points_mean
+## 842302         1.5670875        3.2806281     2.65054179           2.5302489
+## 842517        -0.8262354       -0.4866435    -0.02382489           0.5476623
+## 84300903       0.9413821        1.0519999     1.36227979           2.0354398
+## 84348301       3.2806668        3.3999174     1.91421287           1.4504311
+## 84358402       0.2801253        0.5388663     1.36980615           1.4272370
+## 843786         2.2354545        1.2432416     0.86554001           0.8239307
+##          symmetry_mean fractal_dimension_mean  radius_se texture_se
+## 842302     2.215565542              2.2537638  2.4875451 -0.5647681
+## 842517     0.001391139             -0.8678888  0.4988157 -0.8754733
+## 84300903   0.938858720             -0.3976580  1.2275958 -0.7793976
+## 84348301   2.864862154              4.9066020  0.3260865 -0.1103120
+## 84358402  -0.009552062             -0.5619555  1.2694258 -0.7895490
+## 843786     1.004517928              1.8883435 -0.2548461 -0.5921406
+##          perimeter_se    area_se smoothness_se compactness_se concavity_se
+## 842302      2.8305403  2.4853907    -0.2138135     1.31570389    0.7233897
+## 842517      0.2630955  0.7417493    -0.6048187    -0.69231710   -0.4403926
+## 84300903    0.8501802  1.1802975    -0.2967439     0.81425704    0.2128891
+## 84348301    0.2863415 -0.2881246     0.6890953     2.74186785    0.8187979
+## 84358402    1.2720701  1.1893103     1.4817634    -0.04847723    0.8277425
+## 843786     -0.3210217 -0.2890039     0.1562093     0.44515196    0.1598845
+##          concave.points_se symmetry_se fractal_dimension_se radius_worst
+## 842302          0.66023900   1.1477468           0.90628565    1.8850310
+## 842517          0.25993335  -0.8047423          -0.09935632    1.8043398
+## 84300903        1.42357487   0.2368272           0.29330133    1.5105411
+## 84348301        1.11402678   4.7285198           2.04571087   -0.2812170
+## 84358402        1.14319885  -0.3607748           0.49888916    1.2974336
+## 843786         -0.06906279   0.1340009           0.48641784   -0.1653528
+##          texture_worst perimeter_worst area_worst smoothness_worst
+## 842302     -1.35809849       2.3015755  1.9994782        1.3065367
+## 842517     -0.36887865       1.5337764  1.8888270       -0.3752817
+## 84300903   -0.02395331       1.3462906  1.4550043        0.5269438
+## 84348301    0.13386631      -0.2497196 -0.5495377        3.3912907
+## 84358402   -1.46548091       1.3373627  1.2196511        0.2203623
+## 843786     -0.31356043      -0.1149083 -0.2441054        2.0467119
+##          compactness_worst concavity_worst concave.points_worst symmetry_worst
+## 842302           2.6143647       2.1076718            2.2940576      2.7482041
+## 842517          -0.4300658      -0.1466200            1.0861286     -0.2436753
+## 84300903         1.0819801       0.8542223            1.9532817      1.1512420
+## 84348301         3.8899747       1.9878392            2.1738732      6.0407261
+## 84358402        -0.3131190       0.6126397            0.7286181     -0.8675896
+## 843786           1.7201029       1.2621327            0.9050914      1.7525273
+##          fractal_dimension_worst
+## 842302                 1.9353117
+## 842517                 0.2809428
+## 84300903               0.2012142
+## 84348301               4.9306719
+## 84358402              -0.3967505
+## 843786                 2.2398308
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{options}\NormalTok{(}\AttributeTok{repr.plot.width =} \DecValTok{15}\NormalTok{, }\AttributeTok{repr.plot.height =} \DecValTok{15}\NormalTok{) }\CommentTok{\# set dimensions of plots}
+\CommentTok{\# Plot}
+\FunctionTok{corrplot}\NormalTok{(}\FunctionTok{cor}\NormalTok{(ScaledMatrix),}
+         \CommentTok{\#addCoef.col = 1,    \# color numeric labels}
+         \CommentTok{\# = 0.8, \# size numeric labels}
+         \AttributeTok{order =} \StringTok{"hclust"}\NormalTok{,}
+         \AttributeTok{tl.cex =} \DecValTok{1}\NormalTok{, }\CommentTok{\# size text label}
+         \AttributeTok{addrect =} \DecValTok{8}\NormalTok{) }\CommentTok{\# draw rectangle}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{naive_bayes-practice_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\hypertarget{exploratory-data-analysis}{%
+\section{Exploratory Data Analysis}\label{exploratory-data-analysis}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df}\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{group\_by}\NormalTok{(diagnosis)}\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{summarize}\NormalTok{(}
+    \AttributeTok{n =} \FunctionTok{n}\NormalTok{())}\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{mutate}\NormalTok{(}\AttributeTok{percent =} \FunctionTok{paste0}\NormalTok{(}\FunctionTok{round}\NormalTok{(}\DecValTok{100} \SpecialCharTok{*}\NormalTok{ n}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(n), }\DecValTok{0}\NormalTok{), }\StringTok{"\%"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 3
+##   diagnosis     n percent
+##   <chr>     <int> <chr>  
+## 1 B           357 63%    
+## 2 M           212 37%
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  insight Variabel hasil diagnosis memiliki kadar B untuk jinak dan M
+  untuk ganas. Persentase kasus keganasan merupakan proporsi besar yang
+  mengejutkan dari data dengan 37\%.
+\end{itemize}
+
+\hypertarget{modelling}{%
+\section{Modelling}\label{modelling}}
+
+\hypertarget{pca}{%
+\subsection{PCA}\label{pca}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{) }
+\CommentTok{\# Perform PCA on the scaled matrix and exclude "diagnosis"}
+\NormalTok{pca }\OtherTok{\textless{}{-}} \FunctionTok{prcomp}\NormalTok{(}\AttributeTok{x=}\NormalTok{ ScaledMatrix[,}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{)], }\AttributeTok{scale =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{center =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{summary}\NormalTok{(pca)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Importance of components:
+##                           PC1    PC2     PC3     PC4     PC5     PC6     PC7
+## Standard deviation     3.6444 2.3857 1.67867 1.40735 1.28403 1.09880 0.82172
+## Proportion of Variance 0.4427 0.1897 0.09393 0.06602 0.05496 0.04025 0.02251
+## Cumulative Proportion  0.4427 0.6324 0.72636 0.79239 0.84734 0.88759 0.91010
+##                            PC8    PC9    PC10   PC11    PC12    PC13    PC14
+## Standard deviation     0.69037 0.6457 0.59219 0.5421 0.51104 0.49128 0.39624
+## Proportion of Variance 0.01589 0.0139 0.01169 0.0098 0.00871 0.00805 0.00523
+## Cumulative Proportion  0.92598 0.9399 0.95157 0.9614 0.97007 0.97812 0.98335
+##                           PC15    PC16    PC17    PC18    PC19    PC20   PC21
+## Standard deviation     0.30681 0.28260 0.24372 0.22939 0.22244 0.17652 0.1731
+## Proportion of Variance 0.00314 0.00266 0.00198 0.00175 0.00165 0.00104 0.0010
+## Cumulative Proportion  0.98649 0.98915 0.99113 0.99288 0.99453 0.99557 0.9966
+##                           PC22    PC23   PC24    PC25    PC26    PC27    PC28
+## Standard deviation     0.16565 0.15602 0.1344 0.12442 0.09043 0.08307 0.03987
+## Proportion of Variance 0.00091 0.00081 0.0006 0.00052 0.00027 0.00023 0.00005
+## Cumulative Proportion  0.99749 0.99830 0.9989 0.99942 0.99969 0.99992 0.99997
+##                           PC29    PC30
+## Standard deviation     0.02736 0.01153
+## Proportion of Variance 0.00002 0.00000
+## Cumulative Proportion  1.00000 1.00000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pca\_res }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(pca}\SpecialCharTok{$}\NormalTok{x[,}\DecValTok{1}\SpecialCharTok{:}\DecValTok{7}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# extract diagnosis column}
+\NormalTok{diagnosis }\OtherTok{\textless{}{-}}\NormalTok{ df\_selected[}\FunctionTok{c}\NormalTok{(}\StringTok{"diagnosis"}\NormalTok{)]}
+\FunctionTok{row.names}\NormalTok{(diagnosis) }\OtherTok{\textless{}{-}}\NormalTok{ df}\SpecialCharTok{$}\NormalTok{id}
+
+\CommentTok{\# merge PCA results with diagnosis }
+\NormalTok{PCA\_data }\OtherTok{\textless{}{-}} \FunctionTok{merge}\NormalTok{(diagnosis, pca\_res,}\AttributeTok{by=}\DecValTok{0}\NormalTok{,  }\AttributeTok{all=}\ConstantTok{TRUE}\NormalTok{)}\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\StringTok{"Row.names"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{mutate}\NormalTok{(}\AttributeTok{diagnosis =} \FunctionTok{factor}\NormalTok{(diagnosis, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"B"}\NormalTok{, }\StringTok{"M"}\NormalTok{)))}
+
+\CommentTok{\# asign id as row names}
+\FunctionTok{row.names}\NormalTok{(PCA\_data) }\OtherTok{\textless{}{-}}\NormalTok{ df\_selected}\SpecialCharTok{$}\NormalTok{id}
+\CommentTok{\#head(PCA\_data)}
+\FunctionTok{str}\NormalTok{(PCA\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    569 obs. of  8 variables:
+##  $ diagnosis: Factor w/ 2 levels "B","M": 2 2 2 2 2 2 2 2 2 2 ...
+##  $ PC1      : num  -9.18 -2.39 -5.73 -7.12 -3.93 ...
+##  $ PC2      : num  -1.95 3.76 1.07 -10.27 1.95 ...
+##  $ PC3      : num  -1.122 -0.529 -0.551 -3.23 1.389 ...
+##  $ PC4      : num  3.631 1.117 0.911 0.152 2.938 ...
+##  $ PC5      : num  1.194 -0.621 0.177 2.958 -0.546 ...
+##  $ PC6      : num  1.4102 0.0286 0.541 3.0507 -1.2254 ...
+##  $ PC7      : num  2.1575 0.0133 -0.6676 1.4287 -0.9354 ...
+\end{verbatim}
+
+\hypertarget{train-test-split}{%
+\subsection{Train Test Split}\label{train-test-split}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# scale data}
+\NormalTok{sc\_Matrix }\OtherTok{\textless{}{-}} \FunctionTok{scale}\NormalTok{(Matrix)}
+\CommentTok{\# convert to df}
+\NormalTok{Scaled\_df }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(sc\_Matrix )}
+\CommentTok{\# add diagnosis as categories}
+\NormalTok{Scaled\_df }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(}\AttributeTok{diagnosis =}\NormalTok{ df[,}\DecValTok{2}\NormalTok{],Scaled\_df[,}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{])}
+\CommentTok{\# define diagnosis as factor}
+\NormalTok{Scaled\_df}\OtherTok{\textless{}{-}}\NormalTok{ Scaled\_df}\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{mutate}\NormalTok{(}\AttributeTok{diagnosis =} \FunctionTok{factor}\NormalTok{(diagnosis, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"B"}\NormalTok{,}\StringTok{"M"}\NormalTok{)))}
+
+\CommentTok{\# split training and testing data}
+\NormalTok{Scaled\_df\_index }\OtherTok{\textless{}{-}} \FunctionTok{createDataPartition}\NormalTok{(Scaled\_df}\SpecialCharTok{$}\NormalTok{diagnosis, }\AttributeTok{p=}\FloatTok{0.7}\NormalTok{, }\AttributeTok{list =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{training\_data }\OtherTok{\textless{}{-}}\NormalTok{ Scaled\_df[Scaled\_df\_index,]}
+\NormalTok{testing\_data }\OtherTok{\textless{}{-}}\NormalTok{ Scaled\_df[}\SpecialCharTok{{-}}\NormalTok{Scaled\_df\_index,]}
+
+\CommentTok{\# split PCA data into training and testing data}
+\NormalTok{PCA\_data\_index }\OtherTok{\textless{}{-}} \FunctionTok{createDataPartition}\NormalTok{(PCA\_data}\SpecialCharTok{$}\NormalTok{diagnosis, }\AttributeTok{p=}\FloatTok{0.7}\NormalTok{, }\AttributeTok{list =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{training\_data\_PCA }\OtherTok{\textless{}{-}}\NormalTok{ PCA\_data[PCA\_data\_index,]}
+\NormalTok{testing\_data\_PCA }\OtherTok{\textless{}{-}}\NormalTok{ PCA\_data[}\SpecialCharTok{{-}}\NormalTok{PCA\_data\_index,]}
+\CommentTok{\#str(training\_data\_PCA)}
+\CommentTok{\#str(testing\_data\_PCA)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{naive-bayes}{%
+\subsection{Naive Bayes}\label{naive-bayes}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{) }
+\NormalTok{model\_NB }\OtherTok{\textless{}{-}} \FunctionTok{naiveBayes}\NormalTok{(diagnosis}\SpecialCharTok{\textasciitilde{}}\NormalTok{., }\AttributeTok{data =}\NormalTok{ training\_data, }\AttributeTok{laplace =} \DecValTok{1}\NormalTok{)}
+\FunctionTok{summary}\NormalTok{(model\_NB)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           Length Class  Mode     
+## apriori    2     table  numeric  
+## tables    30     -none- list     
+## levels     2     -none- character
+## isnumeric 30     -none- logical  
+## call       4     -none- call
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{options}\NormalTok{(}\AttributeTok{repr.plot.width =} \DecValTok{5}\NormalTok{, }\AttributeTok{repr.plot.height =} \DecValTok{5}\NormalTok{) }\CommentTok{\# set dimensions of plots}
+\CommentTok{\# model predictions}
+\NormalTok{testing\_data}\SpecialCharTok{$}\NormalTok{predictions\_NB }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(model\_NB, testing\_data)}
+\NormalTok{predictions\_NB }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(model\_NB, testing\_data)}
+\CommentTok{\#confusion matrix}
+\NormalTok{CM\_NB }\OtherTok{\textless{}{-}} \FunctionTok{confusionMatrix}\NormalTok{(predictions\_NB, testing\_data}\SpecialCharTok{$}\NormalTok{diagnosis, }\AttributeTok{positive =} \StringTok{"M"}\NormalTok{)}
+\NormalTok{CM\_NB}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction   B   M
+##          B 103   7
+##          M   4  56
+##                                           
+##                Accuracy : 0.9353          
+##                  95% CI : (0.8872, 0.9673)
+##     No Information Rate : 0.6294          
+##     P-Value [Acc > NIR] : <2e-16          
+##                                           
+##                   Kappa : 0.8599          
+##                                           
+##  Mcnemar's Test P-Value : 0.5465          
+##                                           
+##             Sensitivity : 0.8889          
+##             Specificity : 0.9626          
+##          Pos Pred Value : 0.9333          
+##          Neg Pred Value : 0.9364          
+##              Prevalence : 0.3706          
+##          Detection Rate : 0.3294          
+##    Detection Prevalence : 0.3529          
+##       Balanced Accuracy : 0.9258          
+##                                           
+##        'Positive' Class : M               
+## 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plot confusion matrix}
+\NormalTok{confusion\_matrix }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\FunctionTok{confusionMatrix}\NormalTok{(testing\_data}\SpecialCharTok{$}\NormalTok{predictions\_NB, testing\_data}\SpecialCharTok{$}\NormalTok{diagnosis)}\SpecialCharTok{$}\NormalTok{table)}\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{rename}\NormalTok{(}\AttributeTok{Observed =}\NormalTok{ Reference)}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{  confusion\_matrix, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Observed, }\AttributeTok{y =}\NormalTok{ Prediction)) }\SpecialCharTok{+}
+      \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Confusion matrix"}\NormalTok{, }\AttributeTok{subtitle =} \StringTok{""}\NormalTok{) }\SpecialCharTok{+}
+      \FunctionTok{geom\_tile}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ Freq), }\AttributeTok{colour =} \StringTok{"grey"}\NormalTok{) }\SpecialCharTok{+}
+      \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =} \FunctionTok{sprintf}\NormalTok{(}\StringTok{"\%1.0f"}\NormalTok{, Freq)), }\AttributeTok{vjust =} \DecValTok{1}\NormalTok{, }\AttributeTok{size =} \DecValTok{7}\NormalTok{) }\SpecialCharTok{+}
+      \FunctionTok{scale\_fill\_gradient}\NormalTok{(}\AttributeTok{low =} \StringTok{\textquotesingle{}\#009ADC\textquotesingle{}}\NormalTok{, }\AttributeTok{high =} \StringTok{\textquotesingle{}\#FF1F5B\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+      \FunctionTok{theme\_bw}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{naive_bayes-practice_files/figure-latex/unnamed-chunk-16-1.pdf}
+\# Kesimpulan Tujuan dari analisis ini adalah untuk memprediksi
+diagnosis sampel jaringan payudara dengan benar, berdasarkan 30 fitur
+jaringan. Kami menemukan bahwa model Naive Bayes (92,94\%). Secara
+keseluruhan, ini semua adalah skor kinerja luar biasa yang menunjukkan
+bahwa jaringan biopsi dapat menjadi sumber yang berharga untuk diagnosis
+kanker.
+
+\end{document}

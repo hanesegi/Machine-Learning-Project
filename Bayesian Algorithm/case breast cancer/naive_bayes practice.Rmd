@@ -1,0 +1,197 @@
+---
+title: "Klasifikasi Breast Cancer dengan Naive Bayes"
+author: "yohanesegipratama"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    theme: readable
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Objectives
+Analisis ini bertujuan untuk mengamati fitur mana yang paling membantu dalam memprediksi kanker ganas atau jinak dan untuk melihat tren umum yang dapat membantu kita dalam pemilihan model dan pemilihan parameter hiper. Tujuannya adalah untuk mengklasifikasikan apakah kanker payudara tersebut jinak atau ganas. Untuk mencapai ini saya menggunakan metode naive bayes
+
+# library
+```{r}
+library(tidyverse)
+library(caret)
+library(e1071)
+library(visdat)
+library(cowplot)
+library(corrplot)
+```
+
+# load data
+```{r}
+df = read.csv('data_input/data.csv')
+head(df)
+
+```
+
+# Data Preparation
+## Check Missing Value
+```{r}
+colSums(is.na(df))
+```
+
+
+
+```{r}
+glimpse(df)
+```
+* insight
+Kumpulan data kanker payudara Wisconsin berisi 569 entri yang berasal dari analisis gambar aspirasi jarum halus dari massa payudara. Kolom pertama berisi id unik dan kolom kedua berisi diagnosis.
+
+Tidak ada nilai yang hilang kecuali kolom 33 yang terlihat kosong.
+
+
+```{r}
+# select features
+df_selected <- df[1:32]
+
+# drop id variable
+Matrix <- df_selected%>%
+select(-c("id"))%>%
+# convert diagnosis to numerical
+mutate(diagnosis = case_when(
+diagnosis == "M"~1,
+diagnosis == "B"~0,
+))%>%
+# convert to matrix
+as.matrix()
+
+# add id column as names
+row.names(Matrix) <- df_selected$id
+head(Matrix)
+is.numeric(Matrix)
+```
+
+## Scalling
+```{r}
+mean_sd <- cbind(as.data.frame(colMeans(Matrix)),  as.data.frame(apply(Matrix, 2, sd)))
+colnames(mean_sd) <- c("Mean","SD")
+
+mean_sd
+```
+```{r}
+ScaledMatrix <- scale(Matrix)
+head(ScaledMatrix)
+```
+
+```{r}
+options(repr.plot.width = 15, repr.plot.height = 15) # set dimensions of plots
+# Plot
+corrplot(cor(ScaledMatrix),
+         #addCoef.col = 1,    # color numeric labels
+         # = 0.8, # size numeric labels
+         order = "hclust",
+         tl.cex = 1, # size text label
+         addrect = 8) # draw rectangle
+```
+
+
+# Exploratory Data Analysis
+
+```{r}
+df%>%
+group_by(diagnosis)%>%
+summarize(
+    n = n())%>%
+mutate(percent = paste0(round(100 * n/sum(n), 0), "%"))
+```
+* insight
+Variabel hasil diagnosis memiliki kadar B untuk jinak dan M untuk ganas. Persentase kasus keganasan merupakan proporsi besar yang mengejutkan dari data dengan 37%.
+
+
+
+
+# Modelling
+## PCA
+```{r}
+set.seed(1) 
+# Perform PCA on the scaled matrix and exclude "diagnosis"
+pca <- prcomp(x= ScaledMatrix[,-c(1)], scale = TRUE, center = TRUE)
+summary(pca)
+```
+
+```{r}
+pca_res <- as.data.frame(pca$x[,1:7])
+```
+```{r}
+# extract diagnosis column
+diagnosis <- df_selected[c("diagnosis")]
+row.names(diagnosis) <- df$id
+
+# merge PCA results with diagnosis 
+PCA_data <- merge(diagnosis, pca_res,by=0,  all=TRUE)%>%
+select(-c("Row.names")) %>%
+mutate(diagnosis = factor(diagnosis, levels = c("B", "M")))
+
+# asign id as row names
+row.names(PCA_data) <- df_selected$id
+#head(PCA_data)
+str(PCA_data)
+```
+
+## Train Test Split
+```{r}
+# scale data
+sc_Matrix <- scale(Matrix)
+# convert to df
+Scaled_df <- as.data.frame(sc_Matrix )
+# add diagnosis as categories
+Scaled_df <- cbind(diagnosis = df[,2],Scaled_df[,-1])
+# define diagnosis as factor
+Scaled_df<- Scaled_df%>%
+mutate(diagnosis = factor(diagnosis, levels = c("B","M")))
+
+# split training and testing data
+Scaled_df_index <- createDataPartition(Scaled_df$diagnosis, p=0.7, list = FALSE)
+training_data <- Scaled_df[Scaled_df_index,]
+testing_data <- Scaled_df[-Scaled_df_index,]
+
+# split PCA data into training and testing data
+PCA_data_index <- createDataPartition(PCA_data$diagnosis, p=0.7, list = FALSE)
+training_data_PCA <- PCA_data[PCA_data_index,]
+testing_data_PCA <- PCA_data[-PCA_data_index,]
+#str(training_data_PCA)
+#str(testing_data_PCA)
+```
+
+## Naive Bayes
+```{r}
+set.seed(1) 
+model_NB <- naiveBayes(diagnosis~., data = training_data, laplace = 1)
+summary(model_NB)
+```
+
+```{r}
+options(repr.plot.width = 5, repr.plot.height = 5) # set dimensions of plots
+# model predictions
+testing_data$predictions_NB <- predict(model_NB, testing_data)
+predictions_NB <- predict(model_NB, testing_data)
+#confusion matrix
+CM_NB <- confusionMatrix(predictions_NB, testing_data$diagnosis, positive = "M")
+CM_NB
+```
+
+```{r}
+# Plot confusion matrix
+confusion_matrix <- data.frame(confusionMatrix(testing_data$predictions_NB, testing_data$diagnosis)$table)%>% rename(Observed = Reference)
+ggplot(data =  confusion_matrix, mapping = aes(x = Observed, y = Prediction)) +
+      labs(title = "Confusion matrix", subtitle = "") +
+      geom_tile(aes(fill = Freq), colour = "grey") +
+      geom_text(aes(label = sprintf("%1.0f", Freq)), vjust = 1, size = 7) +
+      scale_fill_gradient(low = '#009ADC', high = '#FF1F5B') +
+      theme_bw() + theme(legend.position = "none")
+
+```
+# Kesimpulan
+Tujuan dari analisis ini adalah untuk memprediksi diagnosis sampel jaringan payudara dengan benar, berdasarkan 30 fitur jaringan. Kami menemukan bahwa model Naive Bayes (92,94%). Secara keseluruhan, ini semua adalah skor kinerja luar biasa yang menunjukkan bahwa jaringan biopsi dapat menjadi sumber yang berharga untuk diagnosis kanker.
